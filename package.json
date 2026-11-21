@@ -1,0 +1,100 @@
+{
+  "name": "@webship.co/workspace-spring-boot",
+  "version": "1.0.0",
+  "description": "Spring Boot for Webship Workspace: the builder (`cmd-spring-boot-project.sh`, the Spring PetClinic sample at the current Spring Boot release, built with its own Maven wrapper on the current long-term-support JDK in a container, with Spring Security added: form login, remember-me, role-named accounts) and the Maven wrapper's CLI tool in every sites folder, the default accounts, the Spring Boot step pack wired into the testing setup, and its AI items in their folders: two agents, a skill, a command and two prompts.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webship/workspace-spring-boot.git"
+  },
+  "files": [
+    "dist/src",
+    "ai",
+    "commands",
+    "features",
+    "scripts",
+    "testing",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "spring-boot",
+    "label": "Spring Boot",
+    "needs": [
+      [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "ai-agents",
+      "ai-skills",
+      "ai-commands",
+      "ai-prompts"
+    ],
+    "commands": {
+      "types": [
+        "sites"
+      ],
+      "workspaces": [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "files": [
+        "commands/cmd-spring-boot-project.sh",
+        "commands/cmd-tools-spring-boot-cli.sh"
+      ]
+    },
+    "scripts": {
+      "functions": [
+        "scripts/functions/fun-spring-boot.sh"
+      ],
+      "args": [
+        "scripts/args/arg-spring-boot.sh",
+        "scripts/args/arg-spring-boot-cli.sh"
+      ],
+      "machine": [
+        "scripts/app/spring-boot-prepare-app.py",
+        "scripts/app/SecurityConfiguration.java",
+        "scripts/app/spring-boot-signed-in.html",
+        "testing/site.feature"
+      ]
+    },
+    "ai": {
+      "agents": [
+        "ai/agents/spring-boot-site-builder.md",
+        "ai/agents/spring-boot-tester.md"
+      ],
+      "skills": [
+        "ai/skills/spring-boot-scenarios"
+      ],
+      "commands": [
+        "ai/commands/spring-boot-test.md"
+      ],
+      "prompts": [
+        "ai/prompts/spring-boot-build-and-test.md",
+        "ai/prompts/spring-boot-scenarios-for-an-area.md"
+      ]
+    },
+    "features": [
+      "features/spring-boot.feature"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship.co/workspace-plugin-api": "^1.0.11",
+    "typescript": "^5.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

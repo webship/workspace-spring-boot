@@ -1,0 +1,16 @@
+        <!-- Who is signed in, and the way out (added by the build of the test site). -->
+        <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+          <li class="nav-item">
+            <span class="navbar-text nav-link" id="signed-in-as">Signed in as <strong sec:authentication="name">user</strong></span>
+          </li>
+          <li class="nav-item">
+            <form th:action="@{/logout}" method="post" class="d-inline">
+              <button type="submit" class="btn btn-link nav-link">Log out</button>
+            </form>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/login}">Log in</a>
+          </li>
+        </ul>
