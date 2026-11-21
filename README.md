@@ -144,6 +144,7 @@ visits, and keeps adding and editing owners and pets for the ADMIN role.
 bash cmd-tools-spring-boot-cli.sh myapp                       # kind, versions, addresses, accounts
 bash cmd-tools-spring-boot-cli.sh myapp --mvnw "test"         # the wrapper's goals in the web container
 bash cmd-tools-spring-boot-cli.sh myapp --mvnw "dependency:tree"
+bash cmd-tools-spring-boot-cli.sh myapp --mvnw="-v"          # options alone: joined to the flag with =
 bash cmd-tools-spring-boot-cli.sh myapp --rebuild             # the jar again after a change to the code, and a restart
 bash cmd-tools-spring-boot-cli.sh myapp --restart             # restart the app and wait for it
 bash cmd-tools-spring-boot-cli.sh myapp --logs                # the end of the web container's log
@@ -151,7 +152,8 @@ bash cmd-tools-spring-boot-cli.sh myapp --add-users           # the default acco
 bash cmd-tools-spring-boot-cli.sh myapp --cancel-users        # take them out again, and a restart
 ```
 
-The wrapper runs in the web container with the project's Maven downloads. The app's code is in `app/` of the
+The wrapper runs in the web container with the project's Maven downloads. A value of `--mvnw` that starts with a
+dash (options alone, as `-v`) is joined to the flag with `=`, or the tool takes it for an option of its own. The app's code is in `app/` of the
 project: change it, then `--rebuild`.
 
 ### The default accounts

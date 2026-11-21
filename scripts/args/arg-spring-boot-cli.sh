@@ -5,7 +5,7 @@ parser.add_argument('PROJECT_NAME',
                     help='The Spring Boot project in this workspace.')
 parser.add_argument('-m', '--mvnw',
                     default="_none_",
-                    help='Goals and options of the app\'s Maven wrapper, run in the web container. Example: --mvnw "test" or --mvnw "dependency:tree"')
+                    help='Goals and options of the app\'s Maven wrapper, run in the web container. A value that starts with a dash is joined to the flag with =. Example: --mvnw "test", --mvnw "dependency:tree" or --mvnw="-v"')
 parser.add_argument('-r', '--rebuild',
                     action='store_true',
                     default=False,

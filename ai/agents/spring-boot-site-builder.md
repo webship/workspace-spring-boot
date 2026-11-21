@@ -54,6 +54,7 @@ sample unchanged, or a new app without Spring Security.
 ```bash
 bash cmd-tools-spring-boot-cli.sh myapp                     # what the app is: kind, versions, addresses, accounts
 bash cmd-tools-spring-boot-cli.sh myapp --mvnw "test"       # the wrapper's goals in the web container
+bash cmd-tools-spring-boot-cli.sh myapp --mvnw="-v"         # options alone: joined to the flag with =
 bash cmd-tools-spring-boot-cli.sh myapp --rebuild           # the jar again after a change to the code, and a restart
 bash cmd-tools-spring-boot-cli.sh myapp --restart           # restart the app and wait for it
 bash cmd-tools-spring-boot-cli.sh myapp --logs              # the end of the web container's log
