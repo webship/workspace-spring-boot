@@ -79,6 +79,13 @@ test('the functions carry the names the core\'s tools look for, and build the ap
   assert.doesNotMatch(src, /\| head -n 1 \| tr|java -version 2>&1" < \/dev\/null 2>\/dev\/null \| head/, 'no head that cuts the pipe of the container tool');
 });
 
+test('the help of --mvnw says how to give the wrapper options alone: joined to the flag with =', () => {
+  // Python's argument parser takes a value that starts with a dash for an option: --mvnw "-v" stops the tool.
+  assert.match(read('scripts/args/arg-spring-boot-cli.sh'), /A value that starts with a dash is joined to the flag with =\. Example: [^']*--mvnw="-v"/);
+  assert.ok(read('README.md').includes('--mvnw="-v"'), 'the README shows it');
+  assert.ok(read('ai/agents/spring-boot-site-builder.md').includes('--mvnw="-v"'), 'the site-builder agent shows it');
+});
+
 test('the preparation script is the step pack\'s, and its files are beside it', () => {
   const py = read('scripts/app/spring-boot-prepare-app.py');
   assert.match(py, /def asset\(name, flat_name\):/, 'it finds its files beside it under their flat names');
